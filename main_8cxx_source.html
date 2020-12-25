@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: src/main.cxx Source File</title>
+<title>CubeAnalysis: src/main.cxx Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">CubeAnalysis
    </div>
   </td>
  </tr>
@@ -160,54 +160,44 @@ $(document).ready(function(){initNavTree('main_8cxx_source.html',''); initResiza
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span> (testEvent-&gt;GetPrimaryParticles().GetNumberOfNeutron() != 1) <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (testEvent-&gt;GetPrimaryParticles().GetNumberOfProton() != 0) <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">if</span> (testEvent-&gt;GetPrimaryParticles().GetNumberOfOther() != 0) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">/*</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">    std::cout &lt;&lt; &quot;e: &quot; &lt;&lt; testEvent-&gt;GetPrimaryParticles().GetNumberOfElectron()</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">              &lt;&lt; &quot; mu-: &quot; &lt;&lt; testEvent-&gt;GetPrimaryParticles().GetNumberOfMuon()</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">              &lt;&lt; &quot; mu+: &quot; &lt;&lt; testEvent-&gt;GetPrimaryParticles().GetNumberOfAntiMuon()</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">              &lt;&lt; &quot; p: &quot; &lt;&lt;   testEvent-&gt;GetPrimaryParticles().GetNumberOfProton()</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">              &lt;&lt; &quot; n: &quot; &lt;&lt;   testEvent-&gt;GetPrimaryParticles().GetNumberOfNeutron()</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">              &lt;&lt; &quot; pi: &quot; &lt;&lt;  testEvent-&gt;GetPrimaryParticles().GetNumberOfPion()</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">              &lt;&lt; &quot; g: &quot; &lt;&lt;   testEvent-&gt;GetPrimaryParticles().GetNumberOfGamma()</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">              &lt;&lt; &quot; o: &quot; &lt;&lt;   testEvent-&gt;GetPrimaryParticles().GetNumberOfOther()</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">              &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">              */</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">int</span> numberOfPrimaryAntiMuon = 0;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">//select single primary anti muon object event</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> o : testEvent-&gt;GetObjects())</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (o.GetPdg() == -13)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                numberOfPrimaryAntiMuon++;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span> (numberOfPrimaryAntiMuon != 1)</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordtype">double</span> earliestTime = testEvent-&gt;GetFirstObject().GetPosition().T();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">double</span> muonTime = testEvent-&gt;GetVertex().GetPosition().T();</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">//std::cout &lt;&lt; &quot;earliestTime - muonTime: &quot; &lt;&lt; earliestTime - muonTime &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (testEvent-&gt;GetFirstObject().GetPdg() == 2112)</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            deltaTNeutron-&gt;Fill(earliestTime - muonTime);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            deltaTOther-&gt;Fill(earliestTime - muonTime);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="comment">//testEvent-&gt;Show();</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    TCanvas can1;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    deltaTNeutron-&gt;Draw();</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    can1.SaveAs(<span class="stringliteral">&quot;deltaTNeutron.pdf&quot;</span>);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    TCanvas can2;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    deltaTOther-&gt;Draw();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    can2.SaveAs(<span class="stringliteral">&quot;deltaTOther.pdf&quot;</span>);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">int</span> numberOfPrimaryAntiMuon = 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">//select single primary anti muon object event</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> o : testEvent-&gt;GetObjects())</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">if</span> (o.GetPdg() == -13)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                numberOfPrimaryAntiMuon++;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span> (numberOfPrimaryAntiMuon != 1)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">double</span> earliestTime = testEvent-&gt;GetFirstObject().GetPosition().T();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">double</span> muonTime = testEvent-&gt;GetVertex().GetPosition().T();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">//std::cout &lt;&lt; &quot;earliestTime - muonTime: &quot; &lt;&lt; earliestTime - muonTime &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span> (testEvent-&gt;GetFirstObject().GetPdg() == 2112)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            deltaTNeutron-&gt;Fill(earliestTime - muonTime);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            deltaTOther-&gt;Fill(earliestTime - muonTime);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="comment">//testEvent-&gt;Show();</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    TCanvas can1;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    deltaTNeutron-&gt;Draw();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    can1.SaveAs(<span class="stringliteral">&quot;deltaTNeutron.pdf&quot;</span>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    TCanvas can2;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    deltaTOther-&gt;Draw();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    can2.SaveAs(<span class="stringliteral">&quot;deltaTOther.pdf&quot;</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
